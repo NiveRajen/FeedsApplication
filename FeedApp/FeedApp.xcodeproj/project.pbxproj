@@ -9,12 +9,22 @@
 /* Begin PBXBuildFile section */
 		99FB53C5264C0C6800264C84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C4264C0C6800264C84 /* AppDelegate.swift */; };
 		99FB53C7264C0C6800264C84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C6264C0C6800264C84 /* SceneDelegate.swift */; };
-		99FB53C9264C0C6800264C84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C8264C0C6800264C84 /* ViewController.swift */; };
+		99FB53C9264C0C6800264C84 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C8264C0C6800264C84 /* FeedViewController.swift */; };
 		99FB53CC264C0C6800264C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FB53CA264C0C6800264C84 /* Main.storyboard */; };
 		99FB53CE264C0C6800264C84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FB53CD264C0C6800264C84 /* Assets.xcassets */; };
 		99FB53D1264C0C6800264C84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FB53CF264C0C6800264C84 /* LaunchScreen.storyboard */; };
 		99FB53DC264C0C6900264C84 /* FeedAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53DB264C0C6900264C84 /* FeedAppTests.swift */; };
 		99FB53E7264C0C6900264C84 /* FeedAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53E6264C0C6900264C84 /* FeedAppUITests.swift */; };
+		99FB53F6264C0D1800264C84 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53F5264C0D1800264C84 /* Constants.swift */; };
+		99FB53F9264C0DC200264C84 /* FeedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53F8264C0DC200264C84 /* FeedsModel.swift */; };
+		99FB53FB264C0E8400264C84 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53FA264C0E8400264C84 /* Extension.swift */; };
+		99FB53FE264C118100264C84 /* FeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53FD264C118100264C84 /* FeedAPI.swift */; };
+		99FB5401264C11D000264C84 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB5400264C11D000264C84 /* Enum.swift */; };
+		99FB5403264C11F700264C84 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB5402264C11F700264C84 /* Reachability.swift */; };
+		99FB5406264C138E00264C84 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB5405264C138E00264C84 /* FeedViewModel.swift */; };
+		99FB5409264C14B700264C84 /* CustomDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB5408264C14B700264C84 /* CustomDataSource.swift */; };
+		99FB540C264C14FC00264C84 /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB540B264C14FC00264C84 /* RoundedCornerView.swift */; };
+		99FB540F264C154D00264C84 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB540E264C154D00264C84 /* FeedTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +48,7 @@
 		99FB53C1264C0C6800264C84 /* FeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FB53C4264C0C6800264C84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FB53C6264C0C6800264C84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		99FB53C8264C0C6800264C84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99FB53C8264C0C6800264C84 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		99FB53CB264C0C6800264C84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99FB53CD264C0C6800264C84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99FB53D0264C0C6800264C84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +59,16 @@
 		99FB53E2264C0C6900264C84 /* FeedAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FB53E6264C0C6900264C84 /* FeedAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAppUITests.swift; sourceTree = "<group>"; };
 		99FB53E8264C0C6900264C84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99FB53F5264C0D1800264C84 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		99FB53F8264C0DC200264C84 /* FeedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsModel.swift; sourceTree = "<group>"; };
+		99FB53FA264C0E8400264C84 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		99FB53FD264C118100264C84 /* FeedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAPI.swift; sourceTree = "<group>"; };
+		99FB5400264C11D000264C84 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		99FB5402264C11F700264C84 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		99FB5405264C138E00264C84 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		99FB5408264C14B700264C84 /* CustomDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataSource.swift; sourceTree = "<group>"; };
+		99FB540B264C14FC00264C84 /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
+		99FB540E264C154D00264C84 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +119,16 @@
 		99FB53C3264C0C6800264C84 /* FeedApp */ = {
 			isa = PBXGroup;
 			children = (
+				99FB5410264C155800264C84 /* ViewControllers */,
+				99FB540D264C153900264C84 /* Views */,
+				99FB540A264C14E500264C84 /* Components */,
+				99FB5407264C14A100264C84 /* DataSource */,
+				99FB5404264C137B00264C84 /* ViewModels */,
+				99FB53FC264C116000264C84 /* Networks */,
+				99FB53F7264C0DAE00264C84 /* Models */,
+				99FB53F4264C0D0800264C84 /* Common */,
 				99FB53C4264C0C6800264C84 /* AppDelegate.swift */,
 				99FB53C6264C0C6800264C84 /* SceneDelegate.swift */,
-				99FB53C8264C0C6800264C84 /* ViewController.swift */,
 				99FB53CA264C0C6800264C84 /* Main.storyboard */,
 				99FB53CD264C0C6800264C84 /* Assets.xcassets */,
 				99FB53CF264C0C6800264C84 /* LaunchScreen.storyboard */,
@@ -126,6 +153,73 @@
 				99FB53E8264C0C6900264C84 /* Info.plist */,
 			);
 			path = FeedAppUITests;
+			sourceTree = "<group>";
+		};
+		99FB53F4264C0D0800264C84 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				99FB53F5264C0D1800264C84 /* Constants.swift */,
+				99FB53FA264C0E8400264C84 /* Extension.swift */,
+				99FB5400264C11D000264C84 /* Enum.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		99FB53F7264C0DAE00264C84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				99FB53F8264C0DC200264C84 /* FeedsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		99FB53FC264C116000264C84 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				99FB53FD264C118100264C84 /* FeedAPI.swift */,
+				99FB5402264C11F700264C84 /* Reachability.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		99FB5404264C137B00264C84 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				99FB5405264C138E00264C84 /* FeedViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		99FB5407264C14A100264C84 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				99FB5408264C14B700264C84 /* CustomDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		99FB540A264C14E500264C84 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				99FB540B264C14FC00264C84 /* RoundedCornerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		99FB540D264C153900264C84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				99FB540E264C154D00264C84 /* FeedTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99FB5410264C155800264C84 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				99FB53C8264C0C6800264C84 /* FeedViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +352,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99FB53C9264C0C6800264C84 /* ViewController.swift in Sources */,
+				99FB5406264C138E00264C84 /* FeedViewModel.swift in Sources */,
+				99FB53C9264C0C6800264C84 /* FeedViewController.swift in Sources */,
+				99FB5409264C14B700264C84 /* CustomDataSource.swift in Sources */,
 				99FB53C5264C0C6800264C84 /* AppDelegate.swift in Sources */,
+				99FB5401264C11D000264C84 /* Enum.swift in Sources */,
+				99FB540F264C154D00264C84 /* FeedTableViewCell.swift in Sources */,
+				99FB53F9264C0DC200264C84 /* FeedsModel.swift in Sources */,
+				99FB53FB264C0E8400264C84 /* Extension.swift in Sources */,
+				99FB5403264C11F700264C84 /* Reachability.swift in Sources */,
+				99FB53FE264C118100264C84 /* FeedAPI.swift in Sources */,
 				99FB53C7264C0C6800264C84 /* SceneDelegate.swift in Sources */,
+				99FB53F6264C0D1800264C84 /* Constants.swift in Sources */,
+				99FB540C264C14FC00264C84 /* RoundedCornerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
