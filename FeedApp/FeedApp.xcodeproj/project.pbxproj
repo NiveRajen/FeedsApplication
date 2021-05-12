@@ -119,6 +119,7 @@
 		99FB53C3264C0C6800264C84 /* FeedApp */ = {
 			isa = PBXGroup;
 			children = (
+				99FB5411264C1A2B00264C84 /* Delegates */,
 				99FB5410264C155800264C84 /* ViewControllers */,
 				99FB540D264C153900264C84 /* Views */,
 				99FB540A264C14E500264C84 /* Components */,
@@ -127,8 +128,6 @@
 				99FB53FC264C116000264C84 /* Networks */,
 				99FB53F7264C0DAE00264C84 /* Models */,
 				99FB53F4264C0D0800264C84 /* Common */,
-				99FB53C4264C0C6800264C84 /* AppDelegate.swift */,
-				99FB53C6264C0C6800264C84 /* SceneDelegate.swift */,
 				99FB53CA264C0C6800264C84 /* Main.storyboard */,
 				99FB53CD264C0C6800264C84 /* Assets.xcassets */,
 				99FB53CF264C0C6800264C84 /* LaunchScreen.storyboard */,
@@ -220,6 +219,15 @@
 				99FB53C8264C0C6800264C84 /* FeedViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		99FB5411264C1A2B00264C84 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				99FB53C4264C0C6800264C84 /* AppDelegate.swift */,
+				99FB53C6264C0C6800264C84 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

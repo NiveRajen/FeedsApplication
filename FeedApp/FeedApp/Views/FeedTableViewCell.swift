@@ -8,7 +8,21 @@
 import UIKit
 
 class FeedTableViewCell: UITableViewCell {
-
+  @IBOutlet weak var lblTitle: UILabel!
+  @IBOutlet weak var lblPostBody: UILabel!
+  
+  //Initializing feed object and populating data
+  var feed: Feed? {
+    
+    didSet {
+      
+      if let feed = feed {
+        
+        lblTitle.text = feed.title
+        lblPostBody.text = feed.body      }
+    }
+  }
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

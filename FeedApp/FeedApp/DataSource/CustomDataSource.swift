@@ -51,9 +51,9 @@ extension CustomTableViewDataSource where Model == Feed {
   static func displayData(for itemList: [Feed], with cellIdentifier: String) -> CustomTableViewDataSource {
     
     return CustomTableViewDataSource(with: itemList,
-                                     cellIdentifier) { (repository, cell) in
-//      let repositoryCell = cell as? GitRepositoryTableViewCell
-//      repositoryCell?.gitRepo = repository
+                                     cellIdentifier) { (feed, cell) in
+      let feedCell = cell as? FeedTableViewCell
+      feedCell?.feed = feed
     }
   }
   

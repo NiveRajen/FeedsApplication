@@ -26,7 +26,7 @@ class FeedViewModel: NSObject {
   
   ///Feed list from API
   ///
-  func getRepositories() {
+  func getFeeds() {
     FeedAPI.shared.getFeeds { result in
       switch result {
       case .success(let feedArray):

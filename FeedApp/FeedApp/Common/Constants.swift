@@ -18,4 +18,5 @@ class Constants: NSObject {
   static let dataTypeError = "Datatype Error"
   static let error = "Error"
   static let ok = "Ok"
+  static let feedTableViewCell = "FeedTableViewCell"
 }

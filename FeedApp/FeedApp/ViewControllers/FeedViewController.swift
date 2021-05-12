@@ -8,12 +8,54 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+  
+  @IBOutlet weak var tblViewFeed: UITableView!
+  var dataSource: CustomTableViewDataSource<Feed>? = nil
+  
+  var feedViewModel: FeedViewModel? {
+    
+    didSet {
+      feedViewModel?.getFeeds()
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
+    
+    customInitialization()
   }
 
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
+  func customInitialization() {
 
+    self.feedViewModel = FeedViewModel(delegate: self, feedList: [])
+  }
+
+  //Reload function to load the data source to table view
+  func renderTableViewdataSource(_ feed: [Feed]) {
+    
+    dataSource = .displayData(for: feed, with: Constants.feedTableViewCell)
+    DispatchQueue.main.async { [weak self] in
+      
+      guard let self = self else { return }
+      self.tblViewFeed.dataSource = self.dataSource
+      self.tblViewFeed.reloadData()
+    }
+  }
 }
 
+extension FeedViewController: FeedDelegate {
+  func throwError(error: String) {
+    
+    showAlert(title: Constants.error, msg: error)
+  }
+  
+  func reloadData() {
+    
+    renderTableViewdataSource(self.feedViewModel?.feedList ?? [])
+  }
+}

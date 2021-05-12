@@ -69,3 +69,85 @@ extension UIBezierPath {
     cgPath = path
   }
 }
+
+//MARK: - UIView
+extension UIView {
+  /// Creatng diagonal gradient layer with start and end color for cells
+  ///
+  /// - Parameter startColor: starting color of gradient layer
+  /// - Parameter endColor: ending color of gradient layer
+  func addGradientLayer(with startColor: UIColor, and endColor: UIColor) {
+    
+    let gradientLayer = CAGradientLayer()
+    gradientLayer.frame = self.bounds
+    
+    let gradientOffset = self.bounds.height / self.bounds.width / 2
+    
+    gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+    gradientLayer.locations = [0.0, 1.0]
+    gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5 - gradientOffset)
+    gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5 + gradientOffset)
+    
+    self.layer.insertSublayer(gradientLayer, at: 0)
+  }
+}
+
+//MARK: UICOLOR
+extension UIColor {
+  /// Converting hexstring to color with alpha
+  ///
+  /// - Parameter hexString: String
+  /// - Parameter alpha: float value ranges between 0.0 to 1.0
+  convenience init(hexString: String, alpha: CGFloat = 1.0) {
+    
+    let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    let scanner = Scanner(string: hexString)
+    
+    if (hexString.hasPrefix("#")) {
+      scanner.scanLocation = 1
+    }
+    
+    var color: UInt32 = 0
+    scanner.scanHexInt32(&color)
+    
+    //mark
+    let mask = 0x000000FF
+    let r = Int(color >> 16) & mask
+    let g = Int(color >> 8) & mask
+    let b = Int(color) & mask
+    
+    let red   = CGFloat(r) / 255.0
+    let green = CGFloat(g) / 255.0
+    let blue  = CGFloat(b) / 255.0
+    
+    self.init(red:red, green:green, blue:blue, alpha:alpha)
+  }
+  
+  //Stored Properties with custom color
+  static let DarkBlue = UIColor(hexString: "#1E3AFF")
+  static let CoralBlue = UIColor(hexString: "#54C0DB")
+  static let Purple = UIColor(hexString: "#7133D9")
+  static let BubbleGum = UIColor(hexString: "#FB3770")
+}
+
+//MARK: UIVIEW CONTROLLER
+extension UIViewController {
+  ///Present alert for UI View Controller
+  ///
+  /// - Parameter title: title as string
+  /// - Parameter alert: alert message as string
+  func showAlert(title: String?, msg: String?)  {
+    
+    let okAction = UIAlertAction(title: Constants.ok, style: .default, handler: nil)
+    
+    guard let alertMessage = msg, let alertTitle = title?.capitalized else { return }
+    let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+    
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      
+      alert.addAction(okAction)
+      self.present(alert, animated: true, completion: nil)
+    }
+  }
+}

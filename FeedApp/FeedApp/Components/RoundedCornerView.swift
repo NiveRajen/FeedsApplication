@@ -51,6 +51,6 @@ public class RoundedCornerView: UIView {
     super.layoutSubviews()
     
     applyRadiusMaskFor()
-    self.addGradientLayer(with: .MagentoColor, and: .Honey)
+    self.addGradientLayer(with: .BubbleGum, and: .Purple)
   }
 }
