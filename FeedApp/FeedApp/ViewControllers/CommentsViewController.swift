@@ -85,13 +85,7 @@ extension CommentsViewController: CommentsDelegate {
   }
 }
 
-//MARK: TABLEVIEW
 extension CommentsViewController: UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return header.bounds.height
-  }
-  
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return header
   }

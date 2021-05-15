@@ -25,6 +25,8 @@ class FeedTableViewCell: UITableViewCell {
   
     override func awakeFromNib() {
         super.awakeFromNib()
+      lblTitle.translatesAutoresizingMaskIntoConstraints = false
+      lblPostBody.translatesAutoresizingMaskIntoConstraints = false
         // Initialization code
     }
 
