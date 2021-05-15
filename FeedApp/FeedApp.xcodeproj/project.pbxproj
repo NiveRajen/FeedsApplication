@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		996B8B882650337300232D17 /* FeedCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996B8B872650337300232D17 /* FeedCellView.xib */; };
+		999052D826502547001CAB4D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999052D726502547001CAB4D /* CommentsViewController.swift */; };
+		999052DA265025DE001CAB4D /* CommetnsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999052D9265025DE001CAB4D /* CommetnsViewModel.swift */; };
+		999052DC26502772001CAB4D /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999052DB26502772001CAB4D /* CommentsTableViewCell.swift */; };
 		99FB53C5264C0C6800264C84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C4264C0C6800264C84 /* AppDelegate.swift */; };
 		99FB53C7264C0C6800264C84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C6264C0C6800264C84 /* SceneDelegate.swift */; };
 		99FB53C9264C0C6800264C84 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB53C8264C0C6800264C84 /* FeedViewController.swift */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		996B8B872650337300232D17 /* FeedCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCellView.xib; sourceTree = "<group>"; };
+		999052D726502547001CAB4D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		999052D9265025DE001CAB4D /* CommetnsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommetnsViewModel.swift; sourceTree = "<group>"; };
+		999052DB26502772001CAB4D /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		99FB53C1264C0C6800264C84 /* FeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FB53C4264C0C6800264C84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FB53C6264C0C6800264C84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +192,7 @@
 		99FB5404264C137B00264C84 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				999052D9265025DE001CAB4D /* CommetnsViewModel.swift */,
 				99FB5405264C138E00264C84 /* FeedViewModel.swift */,
 			);
 			path = ViewModels;
@@ -209,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				99FB540E264C154D00264C84 /* FeedTableViewCell.swift */,
+				999052DB26502772001CAB4D /* CommentsTableViewCell.swift */,
+				996B8B872650337300232D17 /* FeedCellView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				99FB53C8264C0C6800264C84 /* FeedViewController.swift */,
+				999052D726502547001CAB4D /* CommentsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -333,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996B8B882650337300232D17 /* FeedCellView.xib in Resources */,
 				99FB53D1264C0C6800264C84 /* LaunchScreen.storyboard in Resources */,
 				99FB53CE264C0C6800264C84 /* Assets.xcassets in Resources */,
 				99FB53CC264C0C6800264C84 /* Main.storyboard in Resources */,
@@ -362,6 +375,8 @@
 			files = (
 				99FB5406264C138E00264C84 /* FeedViewModel.swift in Sources */,
 				99FB53C9264C0C6800264C84 /* FeedViewController.swift in Sources */,
+				999052DA265025DE001CAB4D /* CommetnsViewModel.swift in Sources */,
+				999052D826502547001CAB4D /* CommentsViewController.swift in Sources */,
 				99FB5409264C14B700264C84 /* CustomDataSource.swift in Sources */,
 				99FB53C5264C0C6800264C84 /* AppDelegate.swift in Sources */,
 				99FB5401264C11D000264C84 /* Enum.swift in Sources */,
@@ -373,6 +388,7 @@
 				99FB53C7264C0C6800264C84 /* SceneDelegate.swift in Sources */,
 				99FB53F6264C0D1800264C84 /* Constants.swift in Sources */,
 				99FB540C264C14FC00264C84 /* RoundedCornerView.swift in Sources */,
+				999052DC26502772001CAB4D /* CommentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

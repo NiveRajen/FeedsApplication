@@ -58,3 +58,23 @@ extension CustomTableViewDataSource where Model == Feed {
   }
   
 }
+
+//MARK: - MODEL CLASS VERIFCATION COMMENTS
+extension CustomTableViewDataSource where Model == Comments {
+  
+  ///GitRepository cell configuration
+  ///
+  /// - Parameter itemList: repository array
+  /// - Parameter cellIdentifier: cell identifier
+  /// - Returns: Customtableview datasource
+  
+  static func displayData(for itemList: [Comments], with cellIdentifier: String) -> CustomTableViewDataSource {
+    
+    return CustomTableViewDataSource(with: itemList,
+                                     cellIdentifier) { (comment, cell) in
+      let feedCell = cell as? CommentsTableViewCell
+      feedCell?.comment = comment
+    }
+  }
+  
+}

@@ -10,6 +10,7 @@ import Foundation
 class Constants: NSObject {
   static let baseUrlString = "https://jsonplaceholder.typicode.com"
   static let postsPath = "/posts"
+  static let commentsPath = "/comments"
   static let getMethod = "GET"
   static let networks = "networks"
   static let defaultImage = "DefaultImage"
@@ -19,4 +20,7 @@ class Constants: NSObject {
   static let error = "Error"
   static let ok = "Ok"
   static let feedTableViewCell = "FeedTableViewCell"
+  static let commentsTableViewCell = "CommentsTableViewCell"
+  static let commentsVCIdentifier = "CommentsView"
+  static let feedCellView = "FeedCellView"
 }

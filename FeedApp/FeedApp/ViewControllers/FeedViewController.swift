@@ -31,8 +31,9 @@ class FeedViewController: UIViewController {
   }
   
   func customInitialization() {
-
+    
     self.feedViewModel = FeedViewModel(delegate: self, feedList: [])
+    tblViewFeed.register(UINib(nibName: Constants.feedCellView, bundle: nil), forCellReuseIdentifier: Constants.feedTableViewCell)
   }
 
   //Reload function to load the data source to table view
@@ -48,6 +49,7 @@ class FeedViewController: UIViewController {
   }
 }
 
+//MARK: FEED DELEGATE
 extension FeedViewController: FeedDelegate {
   func throwError(error: String) {
     
@@ -57,5 +59,26 @@ extension FeedViewController: FeedDelegate {
   func reloadData() {
     
     renderTableViewdataSource(self.feedViewModel?.feedList ?? [])
+  }
+}
+
+//MARK: UITABLEVIEWDELEGATE
+extension FeedViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let feed = self.feedViewModel?.feedList?[indexPath.row] {
+      navigateToComments(for: feed)
+    }
+  }
+}
+
+//MARK: NAVIGATION
+extension FeedViewController {
+  private func navigateToComments(for feed: Feed?) {
+    if let feed = feed {
+      guard let commentVC = self.storyboard?.instantiateViewController(identifier: Constants.commentsVCIdentifier) as? CommentsViewController else { return }
+      commentVC.feed = feed
+      
+      self.navigationController?.pushViewController(commentVC, animated: true)
+    }
   }
 }
