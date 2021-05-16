@@ -27,7 +27,7 @@ class CommentsViewModel: NSObject {
   ///Feed list from API
   ///
   func getComments(for id: String) {
-    FeedAPI.shared.getComments(for: id) { result in
+    ApplicationAPI.shared.getComments(for: id) { result in
       switch result {
       case .success(let commentArray):
         

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9963FBA9265148E900F20C52 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963FBA8265148E900F20C52 /* APIHandler.swift */; };
+		9963FBAB26514B2F00F20C52 /* APILoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963FBAA26514B2F00F20C52 /* APILoader.swift */; };
+		9963FBAD26514D3600F20C52 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963FBAC26514D3600F20C52 /* APIHelper.swift */; };
 		996B8B882650337300232D17 /* FeedCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996B8B872650337300232D17 /* FeedCellView.xib */; };
 		999052D826502547001CAB4D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999052D726502547001CAB4D /* CommentsViewController.swift */; };
 		999052DA265025DE001CAB4D /* CommetnsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999052D9265025DE001CAB4D /* CommetnsViewModel.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9963FBA8265148E900F20C52 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		9963FBAA26514B2F00F20C52 /* APILoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoader.swift; sourceTree = "<group>"; };
+		9963FBAC26514D3600F20C52 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		996B8B872650337300232D17 /* FeedCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCellView.xib; sourceTree = "<group>"; };
 		999052D726502547001CAB4D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		999052D9265025DE001CAB4D /* CommetnsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommetnsViewModel.swift; sourceTree = "<group>"; };
@@ -104,6 +110,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9963FBA7265148BF00F20C52 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9963FBA8265148E900F20C52 /* APIHandler.swift */,
+				9963FBAA26514B2F00F20C52 /* APILoader.swift */,
+				9963FBAC26514D3600F20C52 /* APIHelper.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
 		99FB53B8264C0C6800264C84 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +143,7 @@
 		99FB53C3264C0C6800264C84 /* FeedApp */ = {
 			isa = PBXGroup;
 			children = (
+				9963FBA7265148BF00F20C52 /* NetworkLayer */,
 				99FB5411264C1A2B00264C84 /* Delegates */,
 				99FB5410264C155800264C84 /* ViewControllers */,
 				99FB540D264C153900264C84 /* Views */,
@@ -378,16 +395,19 @@
 				999052DA265025DE001CAB4D /* CommetnsViewModel.swift in Sources */,
 				999052D826502547001CAB4D /* CommentsViewController.swift in Sources */,
 				99FB5409264C14B700264C84 /* CustomDataSource.swift in Sources */,
+				9963FBAD26514D3600F20C52 /* APIHelper.swift in Sources */,
 				99FB53C5264C0C6800264C84 /* AppDelegate.swift in Sources */,
 				99FB5401264C11D000264C84 /* Enum.swift in Sources */,
 				99FB540F264C154D00264C84 /* FeedTableViewCell.swift in Sources */,
 				99FB53F9264C0DC200264C84 /* FeedsModel.swift in Sources */,
 				99FB53FB264C0E8400264C84 /* Extension.swift in Sources */,
 				99FB5403264C11F700264C84 /* Reachability.swift in Sources */,
+				9963FBAB26514B2F00F20C52 /* APILoader.swift in Sources */,
 				99FB53FE264C118100264C84 /* FeedAPI.swift in Sources */,
 				99FB53C7264C0C6800264C84 /* SceneDelegate.swift in Sources */,
 				99FB53F6264C0D1800264C84 /* Constants.swift in Sources */,
 				99FB540C264C14FC00264C84 /* RoundedCornerView.swift in Sources */,
+				9963FBA9265148E900F20C52 /* APIHandler.swift in Sources */,
 				999052DC26502772001CAB4D /* CommentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
