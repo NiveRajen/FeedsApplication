@@ -10,9 +10,12 @@ import UIKit
 class CommentsViewController: UIViewController {
   
   @IBOutlet weak var tblViewComments: UITableView!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  
   var feed: Feed?
   
   var dataSource: CustomTableViewDataSource<Comments>? = nil
+  typealias completion = (_ success: Bool) -> Void
   
   var commentsViewModel: CommentsViewModel? {
     
@@ -20,7 +23,6 @@ class CommentsViewController: UIViewController {
       commentsViewModel?.getComments(for: String(feed?.postId ?? 0))
     }
   }
-  
   
   init(with feed: Feed) {
     self.feed = feed
@@ -56,7 +58,23 @@ class CommentsViewController: UIViewController {
   
   func customInitialization() {
     
-    self.commentsViewModel = CommentsViewModel(delegate: self, commentList: [])
+    
+    self.tblViewComments.estimatedSectionHeaderHeight = 0
+    
+    startAnimating { success in
+      
+      if success {
+        self.commentsViewModel = CommentsViewModel(delegate: self, commentList: [])
+        self.configTableView()
+      }
+    }
+  }
+  
+  func configTableView() {
+    self.tblViewComments.delegate = self
+    self.tblViewComments.sectionHeaderHeight = UITableView.automaticDimension
+    self.tblViewComments.estimatedSectionHeaderHeight = 64
+    self.tblViewComments.tableFooterView = UIView()
   }
   
   //Reload function to load the data source to table view
@@ -70,9 +88,12 @@ class CommentsViewController: UIViewController {
       self.tblViewComments.dataSource = self.dataSource
       self.tblViewComments.reloadData()
     }
+    
+    stopAnimating()
   }
 }
 
+//MARK: - COMMENTSDELEGATE
 extension CommentsViewController: CommentsDelegate {
   func throwError(error: String) {
     
@@ -85,8 +106,32 @@ extension CommentsViewController: CommentsDelegate {
   }
 }
 
+//MARK: - UITABLEVIEWDELGATE
 extension CommentsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return header
+  }
+}
+
+//MARK: - ACTIVITY INDICATOR
+extension CommentsViewController {
+  func startAnimating(completionHandler: @escaping(completion)) {
+    
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      
+      self.activityIndicator.startAnimating()
+      completionHandler(true)
+    }
+  }
+  
+  func stopAnimating() {
+    
+    DispatchQueue.main.async { [weak self] in
+      
+      guard let self = self else { return }
+      self.activityIndicator.stopAnimating()
+      self.activityIndicator.isHidden = true
+    }
   }
 }

@@ -21,7 +21,14 @@ protocol RequestHandler {
   func makeRequest(from data: RequestDataType) -> Request
 }
 
-typealias APIHandler = RequestHandler
+protocol ResponseHandler {
+  
+  associatedtype ResponseDataType
+  
+  func parseResponse(data: Data) -> ResponseDataType?
+}
+
+typealias APIHandler = RequestHandler & ResponseHandler
 
 //MARK: - Request
 
@@ -37,3 +44,10 @@ class Request {
   }
 }
 
+extension ResponseHandler {
+  /// generic response data parser
+  func defaultParseResponse<T: Decodable>(data: Data) -> [T]? {
+    
+    return T.decodedData(data)
+  }
+}

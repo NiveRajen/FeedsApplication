@@ -18,8 +18,8 @@ class APILoader<T: APIHandler> {
     self.urlSession = urlSession
   }
   
-  func loadAPIRequest<U: Decodable>(requestData: T.RequestDataType,
-                      completionHandler: @escaping (_ result: Result<[U], RequestError>) -> Void) {
+  func loadAPIRequest(requestData: T.RequestDataType,
+                                    completionHandler: @escaping (_ result: Result<T.ResponseDataType, RequestError>) -> Void) {
     
     // prepare url request
     let urlRequest = apiRequest.makeRequest(from: requestData).urlRequest
@@ -43,12 +43,12 @@ class APILoader<T: APIHandler> {
           return
         }
         
-        guard let decodedData: [U] = U.decodedData(data) else {
+        if let decoded = self.apiRequest.parseResponse(data: data) {
+          completionHandler(.success(decoded))
+        } else {
           completionHandler(.failure(.dataDecodingError))
-          return
         }
         
-        completionHandler(.success(decodedData))
       } else {
         completionHandler(.failure(.noInternet))
       }

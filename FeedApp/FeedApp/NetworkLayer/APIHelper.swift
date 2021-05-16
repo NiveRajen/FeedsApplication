@@ -19,6 +19,10 @@ struct FeedAPI: APIHandler {
     
     return urlrequest
   }
+  
+  func parseResponse(data: Data) -> [Feed]? {
+    return defaultParseResponse(data: data)
+  }
 }
 
 struct CommentAPI: APIHandler {
@@ -32,5 +36,9 @@ struct CommentAPI: APIHandler {
     let urlrequest = Request(urlRequest: request)
     
     return urlrequest
+  }
+  
+  func parseResponse(data: Data) -> [Comments]? {
+    return defaultParseResponse(data: data)
   }
 }

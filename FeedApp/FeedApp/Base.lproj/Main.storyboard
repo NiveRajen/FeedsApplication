@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,18 +23,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2g2-pb-xd6"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yu4-wY-1g6">
+                                <rect key="frame" x="188.5" y="368.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemPurpleColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e5s-Mb-TaQ" secondAttribute="trailing" id="3Iq-7c-eL2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e5s-Mb-TaQ" secondAttribute="bottom" id="B83-Ap-A2R"/>
+                            <constraint firstItem="yu4-wY-1g6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="REx-Nw-VBC"/>
                             <constraint firstItem="e5s-Mb-TaQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jbd-HD-o2S"/>
                             <constraint firstItem="e5s-Mb-TaQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vh4-43-Xpb"/>
+                            <constraint firstItem="yu4-wY-1g6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="zYE-Hu-KCN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feeds" id="ojM-5h-eSG"/>
                     <connections>
+                        <outlet property="activityLoader" destination="yu4-wY-1g6" id="vy1-eL-Yjo"/>
                         <outlet property="tblViewFeed" destination="e5s-Mb-TaQ" id="RLw-Uf-erA"/>
                         <segue destination="hlI-Aj-IcK" kind="show" id="83t-AA-rN5"/>
                     </connections>
@@ -120,15 +128,18 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="delegate" destination="hlI-Aj-IcK" id="gOM-f3-bzS"/>
-                                </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="InG-LR-huC">
+                                <rect key="frame" x="188.5" y="368.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemPurpleColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HuS-7N-5fL"/>
                         <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vLM-s1-VM8" firstAttribute="top" secondItem="HuS-7N-5fL" secondAttribute="top" id="6AV-gy-vpH"/>
+                            <constraint firstItem="InG-LR-huC" firstAttribute="centerX" secondItem="HuS-7N-5fL" secondAttribute="centerX" id="LP2-95-ElE"/>
+                            <constraint firstItem="InG-LR-huC" firstAttribute="centerY" secondItem="HuS-7N-5fL" secondAttribute="centerY" id="SP0-9v-G67"/>
                             <constraint firstItem="HuS-7N-5fL" firstAttribute="trailing" secondItem="vLM-s1-VM8" secondAttribute="trailing" id="Tzf-eX-Eee"/>
                             <constraint firstItem="vLM-s1-VM8" firstAttribute="leading" secondItem="HuS-7N-5fL" secondAttribute="leading" id="j8F-J5-RWt"/>
                             <constraint firstItem="HuS-7N-5fL" firstAttribute="bottom" secondItem="vLM-s1-VM8" secondAttribute="bottom" id="tnQ-My-xpD"/>
@@ -136,6 +147,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Comments" id="xvm-bM-GVf"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="InG-LR-huC" id="uq8-rp-7PH"/>
                         <outlet property="tblViewComments" destination="vLM-s1-VM8" id="HvH-xh-7v9"/>
                     </connections>
                 </viewController>
@@ -164,4 +176,9 @@
             <point key="canvasLocation" x="113.04347826086958" y="107.8125"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

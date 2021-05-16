@@ -10,7 +10,10 @@ import UIKit
 class FeedViewController: UIViewController {
   
   @IBOutlet weak var tblViewFeed: UITableView!
+  @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+  
   var dataSource: CustomTableViewDataSource<Feed>? = nil
+  typealias completion = (_ success: Bool) -> Void
   
   var feedViewModel: FeedViewModel? {
     
@@ -32,8 +35,15 @@ class FeedViewController: UIViewController {
   
   func customInitialization() {
     
-    self.feedViewModel = FeedViewModel(delegate: self, feedList: [])
-    tblViewFeed.register(UINib(nibName: Constants.feedCellView, bundle: nil), forCellReuseIdentifier: Constants.feedTableViewCell)
+    startAnimating { success in
+      
+      if success {
+        
+        self.feedViewModel = FeedViewModel(delegate: self, feedList: [])
+        let nibName = UINib(nibName: Constants.feedCellView, bundle: nil)
+        self.tblViewFeed.register(nibName, forCellReuseIdentifier: Constants.feedTableViewCell)
+      }
+    }
   }
 
   //Reload function to load the data source to table view
@@ -46,6 +56,8 @@ class FeedViewController: UIViewController {
       self.tblViewFeed.dataSource = self.dataSource
       self.tblViewFeed.reloadData()
     }
+    
+    stopAnimating()
   }
 }
 
@@ -78,7 +90,34 @@ extension FeedViewController {
       guard let commentVC = self.storyboard?.instantiateViewController(identifier: Constants.commentsVCIdentifier) as? CommentsViewController else { return }
       commentVC.feed = feed
       
-      self.navigationController?.pushViewController(commentVC, animated: true)
+      DispatchQueue.main.async {[weak self] in
+        
+        guard let self = self else { return }
+        self.navigationController?.pushViewController(commentVC, animated: true)
+      }
+    }
+  }
+}
+
+//MARK: - ACTIVITY INDICATOR
+extension FeedViewController {
+  func startAnimating(completionHandler: @escaping(completion)) {
+    
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      
+      self.activityLoader.startAnimating()
+      completionHandler(true)
+    }
+  }
+  
+  func stopAnimating() {
+    
+    DispatchQueue.main.async { [weak self] in
+      
+      guard let self = self else { return }
+      self.activityLoader.stopAnimating()
+      self.activityLoader.isHidden = true
     }
   }
 }
