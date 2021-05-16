@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ApplicationAPI {
+final class ApplicationAPI {
   static let shared = ApplicationAPI()
   private init() {}
   

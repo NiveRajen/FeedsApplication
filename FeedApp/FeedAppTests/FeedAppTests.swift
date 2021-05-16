@@ -10,8 +10,13 @@ import XCTest
 
 class FeedAppTests: XCTestCase {
   let request = FeedAPI()
+  var feedVC: FeedViewController?
   
   override func setUpWithError() throws {
+    
+    let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+    feedVC = storyBoard.instantiateViewController(withIdentifier: Constants.feedViewController) as? FeedViewController
+    _ = feedVC?.view
     // Put setup code here. This method is called before the invocation of each test method in the class.
   }
   
@@ -67,6 +72,46 @@ class FeedAppTests: XCTestCase {
     let jsonData = sampleResponse.data(using: .utf8)!
     
     XCTAssertNil(request.parseResponse(data: jsonData))
+  }
+  
+  //MARK: TEST CASES FOR TABLE VIEW
+  func test_CheckForTableView() {
+    
+    XCTAssertNotNil(feedVC?.tblViewFeed)
+  }
+  
+  // Check for Table View delegate and Data source
+  func test_CheckForDataSourceAndDelegate() {
+    
+    XCTAssertNotNil(feedVC?.tblViewFeed.delegate is FeedViewController)
+    XCTAssertNotNil(feedVC?.tblViewFeed.dataSource is CustomTableViewDataSource<Feed>)
+  }
+  
+  //Check for numberOfRows
+  func test_CheckForRowCount() {
+    
+    feedVC?.dataSource = .displayData(for: [], with: Constants.feedTableViewCell)
+    feedVC?.tblViewFeed.dataSource = feedVC?.dataSource
+    XCTAssertTrue(feedVC?.tblViewFeed.numberOfRows(inSection: 0) ?? 0 == 0)
+  }
+  
+  let jsonDataString = Data("""
+        [{
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipitsuscipit recusandae consequuntur expedita et cumreprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto"
+        }]
+        """.utf8)
+  
+  func test_CheckForNotNilArray() {
+    let feeds = try? JSONDecoder().decode([Feed].self, from: jsonDataString)
+    
+    feedVC?.dataSource = .displayData(for: feeds ?? [], with: Constants.feedTableViewCell)
+    feedVC?.tblViewFeed.dataSource = feedVC?.dataSource
+    feedVC?.tblViewFeed.reloadData()
+    
+    XCTAssertTrue(feedVC?.tblViewFeed.numberOfRows(inSection: 0) ?? 0 > 0)
   }
 }
 

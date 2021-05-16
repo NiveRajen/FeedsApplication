@@ -26,7 +26,7 @@ class APILoader<T: APIHandler> {
     // do session task
     urlSession.dataTask(with: urlRequest) { (data, res, err) in
       
-      if Reachability.isConnectedToNetwork() {
+      if NetworkCheck.sharedInstance().currentStatus == .satisfied {
         
         guard err == nil else {
           completionHandler(.failure(.clientError))

@@ -6,18 +6,21 @@
 //
 
 import UIKit
+import Network
 
-class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController {
   
   @IBOutlet weak var tblViewFeed: UITableView!
   @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+  @IBOutlet weak var lblNoRecords: UILabel!
   
   var dataSource: CustomTableViewDataSource<Feed>? = nil
   typealias completion = (_ success: Bool) -> Void
   
-  var feedViewModel: FeedViewModel? {
+  private var feedViewModel: FeedViewModel? {
     
     didSet {
+      
       feedViewModel?.getFeeds()
     }
   }
@@ -33,8 +36,9 @@ class FeedViewController: UIViewController {
     return .lightContent
   }
   
-  func customInitialization() {
+  private func customInitialization() {
     
+    NetworkCheck.sharedInstance().addObserver(observer: self)
     startAnimating { success in
       
       if success {
@@ -47,17 +51,29 @@ class FeedViewController: UIViewController {
   }
 
   //Reload function to load the data source to table view
-  func renderTableViewdataSource(_ feed: [Feed]) {
+  private func renderTableViewdataSource(_ feed: [Feed]) {
     
-    dataSource = .displayData(for: feed, with: Constants.feedTableViewCell)
     DispatchQueue.main.async { [weak self] in
       
       guard let self = self else { return }
+      
+      self.dataSource = .displayData(for: feed, with: Constants.feedTableViewCell)
       self.tblViewFeed.dataSource = self.dataSource
       self.tblViewFeed.reloadData()
     }
     
     stopAnimating()
+  }
+  
+  private func hideShowNoRecordLabel() {
+    
+    DispatchQueue.main.async {[weak self] in
+      guard let self = self else { return }
+      
+      self.tblViewFeed.isHidden = (self.feedViewModel?.showNoRecords() ?? false)
+      self.lblNoRecords.isHidden = !(self.feedViewModel?.showNoRecords() ?? true)
+      self.activityLoader.stopAnimating()
+    }
   }
 }
 
@@ -65,21 +81,31 @@ class FeedViewController: UIViewController {
 extension FeedViewController: FeedDelegate {
   func throwError(error: String) {
     
+    hideShowNoRecordLabel()
     showAlert(title: Constants.error, msg: error)
   }
   
   func reloadData() {
     
+    hideShowNoRecordLabel()
     renderTableViewdataSource(self.feedViewModel?.feedList ?? [])
   }
 }
 
 //MARK: UITABLEVIEWDELEGATE
 extension FeedViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
     if let feed = self.feedViewModel?.feedList?[indexPath.row] {
       navigateToComments(for: feed)
     }
+  }
+  
+  internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+    let animation = BounceAnimation.makeMoveUpWithBounce(rowHeight: cell.frame.height, duration: 1.0, delayFactor: 0.05)
+    let animator = Animator(animation: animation)
+    animator.animate(cell: cell, at: indexPath, in: tblViewFeed)
   }
 }
 
@@ -101,7 +127,7 @@ extension FeedViewController {
 
 //MARK: - ACTIVITY INDICATOR
 extension FeedViewController {
-  func startAnimating(completionHandler: @escaping(completion)) {
+  private func startAnimating(completionHandler: @escaping(completion)) {
     
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
@@ -111,13 +137,30 @@ extension FeedViewController {
     }
   }
   
-  func stopAnimating() {
+  private func stopAnimating() {
     
     DispatchQueue.main.async { [weak self] in
       
       guard let self = self else { return }
       self.activityLoader.stopAnimating()
       self.activityLoader.isHidden = true
+    }
+  }
+}
+
+extension FeedViewController: NetworkCheckObserver {
+  func statusDidChange(status: NWPath.Status) {
+    if status == .satisfied {
+      
+      startAnimating { success in
+        if success {
+          
+          self.feedViewModel?.getFeeds()
+        }
+      }
+    } else {
+      
+        hideShowNoRecordLabel()
     }
   }
 }

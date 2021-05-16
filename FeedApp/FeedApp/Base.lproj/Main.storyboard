@@ -11,7 +11,7 @@
         <!--Feeds-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Feeds" id="BYZ-38-t0r" customClass="FeedViewController" customModule="FeedApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" title="Feeds" id="BYZ-38-t0r" customClass="FeedViewController" customModule="FeedApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2g2-pb-xd6"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yu4-wY-1g6">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Feeds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhf-Bb-Iwq">
+                                <rect key="frame" x="159" y="374" width="96" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.8492415472" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yu4-wY-1g6">
                                 <rect key="frame" x="188.5" y="368.5" width="37" height="37"/>
                                 <color key="color" systemColor="systemPurpleColor"/>
                             </activityIndicatorView>
@@ -31,8 +37,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Qhf-Bb-Iwq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1OU-WU-4wi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e5s-Mb-TaQ" secondAttribute="trailing" id="3Iq-7c-eL2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e5s-Mb-TaQ" secondAttribute="bottom" id="B83-Ap-A2R"/>
+                            <constraint firstItem="Qhf-Bb-Iwq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Isa-xQ-VPJ"/>
                             <constraint firstItem="yu4-wY-1g6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="REx-Nw-VBC"/>
                             <constraint firstItem="e5s-Mb-TaQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jbd-HD-o2S"/>
                             <constraint firstItem="e5s-Mb-TaQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vh4-43-Xpb"/>
@@ -42,6 +50,7 @@
                     <navigationItem key="navigationItem" title="Feeds" id="ojM-5h-eSG"/>
                     <connections>
                         <outlet property="activityLoader" destination="yu4-wY-1g6" id="vy1-eL-Yjo"/>
+                        <outlet property="lblNoRecords" destination="Qhf-Bb-Iwq" id="yog-YR-5K4"/>
                         <outlet property="tblViewFeed" destination="e5s-Mb-TaQ" id="RLw-Uf-erA"/>
                         <segue destination="hlI-Aj-IcK" kind="show" id="83t-AA-rN5"/>
                     </connections>

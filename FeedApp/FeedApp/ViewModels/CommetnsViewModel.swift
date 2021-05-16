@@ -14,9 +14,9 @@ protocol CommentsDelegate {
   func reloadData()
 }
 
-class CommentsViewModel: NSObject {
+final class CommentsViewModel: NSObject {
   
-  var delegate: CommentsDelegate?
+  private var delegate: CommentsDelegate?
   var commentList: [Comments]?
   
   init(delegate: CommentsDelegate, commentList: [Comments]) {

@@ -151,3 +151,17 @@ extension UIViewController {
     }
   }
 }
+
+//MARK: UITableView
+extension UITableView {
+  /// check for last visible cell in the table view
+  ///
+  /// - Parameter indexPath: indexPath of table view
+  func isLastVisibleCell(at indexPath: IndexPath) -> Bool {
+    guard let lastIndexPath = indexPathsForVisibleRows?.last else {
+      return false
+    }
+    
+    return lastIndexPath == indexPath
+  }
+}

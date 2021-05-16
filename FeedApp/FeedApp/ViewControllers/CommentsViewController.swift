@@ -7,17 +7,17 @@
 
 import UIKit
 
-class CommentsViewController: UIViewController {
+final class CommentsViewController: UIViewController {
   
   @IBOutlet weak var tblViewComments: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   var feed: Feed?
   
-  var dataSource: CustomTableViewDataSource<Comments>? = nil
+  private var dataSource: CustomTableViewDataSource<Comments>? = nil
   typealias completion = (_ success: Bool) -> Void
   
-  var commentsViewModel: CommentsViewModel? {
+  private var commentsViewModel: CommentsViewModel? {
     
     didSet {
       commentsViewModel?.getComments(for: String(feed?.postId ?? 0))
@@ -56,7 +56,7 @@ class CommentsViewController: UIViewController {
     return .lightContent
   }
   
-  func customInitialization() {
+  private func customInitialization() {
     
     
     self.tblViewComments.estimatedSectionHeaderHeight = 0
@@ -70,15 +70,16 @@ class CommentsViewController: UIViewController {
     }
   }
   
-  func configTableView() {
-    self.tblViewComments.delegate = self
-    self.tblViewComments.sectionHeaderHeight = UITableView.automaticDimension
-    self.tblViewComments.estimatedSectionHeaderHeight = 64
-    self.tblViewComments.tableFooterView = UIView()
+  private func configTableView() {
+    
+    tblViewComments.delegate = self
+    tblViewComments.sectionHeaderHeight = UITableView.automaticDimension
+    tblViewComments.estimatedSectionHeaderHeight = 64
+    tblViewComments.tableFooterView = UIView()
   }
   
   //Reload function to load the data source to table view
-  func renderTableViewdataSource(_ comments: [Comments]) {
+  private func renderTableViewdataSource(_ comments: [Comments]) {
     
     dataSource = .displayData(for: comments, with: Constants.commentsTableViewCell)
     
@@ -108,14 +109,14 @@ extension CommentsViewController: CommentsDelegate {
 
 //MARK: - UITABLEVIEWDELGATE
 extension CommentsViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return header
   }
 }
 
 //MARK: - ACTIVITY INDICATOR
 extension CommentsViewController {
-  func startAnimating(completionHandler: @escaping(completion)) {
+  private func startAnimating(completionHandler: @escaping(completion)) {
     
     DispatchQueue.main.async { [weak self] in
       guard let self = self else { return }
@@ -125,7 +126,7 @@ extension CommentsViewController {
     }
   }
   
-  func stopAnimating() {
+  private func stopAnimating() {
     
     DispatchQueue.main.async { [weak self] in
       

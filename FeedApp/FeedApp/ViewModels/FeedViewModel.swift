@@ -14,9 +14,9 @@ protocol FeedDelegate {
   func reloadData()
 }
 
-class FeedViewModel: NSObject {
+final class FeedViewModel: NSObject {
   
-  var delegate: FeedDelegate?
+  private var delegate: FeedDelegate?
   var feedList: [Feed]?
   
   init(delegate: FeedDelegate, feedList: [Feed]) {

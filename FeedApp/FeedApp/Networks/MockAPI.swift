@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockAPI {
+final class MockAPI {
   static let shared = MockAPI()
   private init() {}
   

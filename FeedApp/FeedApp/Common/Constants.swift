@@ -23,4 +23,5 @@ class Constants: NSObject {
   static let commentsTableViewCell = "CommentsTableViewCell"
   static let commentsVCIdentifier = "CommentsView"
   static let feedCellView = "FeedCellView"
+  static let feedViewController = "FeedViewController"
 }
