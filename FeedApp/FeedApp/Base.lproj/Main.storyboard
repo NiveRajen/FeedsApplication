@@ -142,6 +142,12 @@
                                 <rect key="frame" x="188.5" y="368.5" width="37" height="37"/>
                                 <color key="color" systemColor="systemPurpleColor"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2J-Qq-N47">
+                                <rect key="frame" x="134" y="374" width="146.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.8492415472" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HuS-7N-5fL"/>
                         <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -150,6 +156,8 @@
                             <constraint firstItem="InG-LR-huC" firstAttribute="centerX" secondItem="HuS-7N-5fL" secondAttribute="centerX" id="LP2-95-ElE"/>
                             <constraint firstItem="InG-LR-huC" firstAttribute="centerY" secondItem="HuS-7N-5fL" secondAttribute="centerY" id="SP0-9v-G67"/>
                             <constraint firstItem="HuS-7N-5fL" firstAttribute="trailing" secondItem="vLM-s1-VM8" secondAttribute="trailing" id="Tzf-eX-Eee"/>
+                            <constraint firstItem="p2J-Qq-N47" firstAttribute="centerX" secondItem="HuS-7N-5fL" secondAttribute="centerX" id="bF6-Lu-rMK"/>
+                            <constraint firstItem="p2J-Qq-N47" firstAttribute="centerY" secondItem="HuS-7N-5fL" secondAttribute="centerY" id="dGg-Wc-93x"/>
                             <constraint firstItem="vLM-s1-VM8" firstAttribute="leading" secondItem="HuS-7N-5fL" secondAttribute="leading" id="j8F-J5-RWt"/>
                             <constraint firstItem="HuS-7N-5fL" firstAttribute="bottom" secondItem="vLM-s1-VM8" secondAttribute="bottom" id="tnQ-My-xpD"/>
                         </constraints>
@@ -157,6 +165,7 @@
                     <navigationItem key="navigationItem" title="Comments" id="xvm-bM-GVf"/>
                     <connections>
                         <outlet property="activityIndicator" destination="InG-LR-huC" id="uq8-rp-7PH"/>
+                        <outlet property="lblNoRecords" destination="p2J-Qq-N47" id="OqV-f0-fv1"/>
                         <outlet property="tblViewComments" destination="vLM-s1-VM8" id="HvH-xh-7v9"/>
                     </connections>
                 </viewController>

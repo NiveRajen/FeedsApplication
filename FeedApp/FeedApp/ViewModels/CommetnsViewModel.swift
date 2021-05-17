@@ -24,8 +24,9 @@ final class CommentsViewModel: NSObject {
     self.commentList = commentList
   }
   
-  ///Feed list from API
+  ///Comments from API
   ///
+  /// - Parameter id: post id to get the comments
   func getComments(for id: String) {
     ApplicationAPI.shared.getComments(for: id) { result in
       switch result {
@@ -50,7 +51,7 @@ final class CommentsViewModel: NSObject {
   
   ///Reload data source using feed list Delegate
   ///
-  /// - Returns: array of feed
+  /// - parameter comments: array of comments
   func reloadDataWithGitRepositoryList(_ comments: [Comments]) {
     self.commentList = comments
     self.delegate?.reloadData()

@@ -19,6 +19,7 @@ extension Decodable {
 }
 
 //Draw Curve and Line path for rounded coner for view for each and every edge with different radius
+//MARK: - UIBEZIERPATH
 extension UIBezierPath {
   convenience init(shouldRoundRect rect: CGRect, topLeftRadius: CGSize = .zero, topRightRadius: CGSize = .zero, bottomLeftRadius: CGSize = .zero, bottomRightRadius: CGSize = .zero){
     

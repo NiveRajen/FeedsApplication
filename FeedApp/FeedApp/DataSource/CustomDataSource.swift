@@ -44,7 +44,7 @@ extension CustomTableViewDataSource where Model == Feed {
   
   ///GitRepository cell configuration
   ///
-  /// - Parameter itemList: repository array
+  /// - Parameter itemList: feeds
   /// - Parameter cellIdentifier: cell identifier
   /// - Returns: Customtableview datasource
   
@@ -64,7 +64,7 @@ extension CustomTableViewDataSource where Model == Comments {
   
   ///GitRepository cell configuration
   ///
-  /// - Parameter itemList: repository array
+  /// - Parameter itemList: comments
   /// - Parameter cellIdentifier: cell identifier
   /// - Returns: Customtableview datasource
   

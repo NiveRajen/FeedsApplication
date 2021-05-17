@@ -50,7 +50,7 @@ final class FeedViewModel: NSObject {
   
   ///Reload data source using feed list Delegate
   ///
-  /// - Returns: array of feed
+  /// - Parameter feeds: array of feed
   func reloadDataWithGitRepositoryList(_ feeds: [Feed]) {
     self.feedList = feeds
     self.delegate?.reloadData()

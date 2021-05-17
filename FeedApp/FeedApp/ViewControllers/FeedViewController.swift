@@ -18,9 +18,8 @@ final class FeedViewController: UIViewController {
   typealias completion = (_ success: Bool) -> Void
   
   private var feedViewModel: FeedViewModel? {
-    
+
     didSet {
-      
       feedViewModel?.getFeeds()
     }
   }
@@ -31,6 +30,12 @@ final class FeedViewController: UIViewController {
     
     customInitialization()
   }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    
+    NetworkCheck.sharedInstance.removeObserver(observer: self)
+  }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -38,7 +43,7 @@ final class FeedViewController: UIViewController {
   
   private func customInitialization() {
     
-    NetworkCheck.sharedInstance().addObserver(observer: self)
+    NetworkCheck.sharedInstance.addObserver(observer: self)
     startAnimating { success in
       
       if success {
@@ -65,7 +70,8 @@ final class FeedViewController: UIViewController {
     stopAnimating()
   }
   
-  private func hideShowNoRecordLabel() {
+  //Hiding the table view if there is no data
+  private func hideShowTableView() {
     
     DispatchQueue.main.async {[weak self] in
       guard let self = self else { return }
@@ -81,13 +87,13 @@ final class FeedViewController: UIViewController {
 extension FeedViewController: FeedDelegate {
   func throwError(error: String) {
     
-    hideShowNoRecordLabel()
+    hideShowTableView()
     showAlert(title: Constants.error, msg: error)
   }
   
   func reloadData() {
     
-    hideShowNoRecordLabel()
+    hideShowTableView()
     renderTableViewdataSource(self.feedViewModel?.feedList ?? [])
   }
 }
@@ -148,6 +154,7 @@ extension FeedViewController {
   }
 }
 
+//MARK: - NETWORKCHECKOBSERVER
 extension FeedViewController: NetworkCheckObserver {
   func statusDidChange(status: NWPath.Status) {
     if status == .satisfied {
@@ -159,8 +166,7 @@ extension FeedViewController: NetworkCheckObserver {
         }
       }
     } else {
-      
-        hideShowNoRecordLabel()
+        hideShowTableView()
     }
   }
 }

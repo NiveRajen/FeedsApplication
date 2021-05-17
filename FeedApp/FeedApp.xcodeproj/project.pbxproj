@@ -127,6 +127,15 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		998374D7265264D400EF2FD0 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				9963FBAE26516DC200F20C52 /* MockUrlProtocol.swift */,
+				9963FBB026516E2600F20C52 /* MockAPI.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		99FB53B8264C0C6800264C84 = {
 			isa = PBXGroup;
 			children = (
@@ -207,12 +216,11 @@
 		99FB53FC264C116000264C84 /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				998374D7265264D400EF2FD0 /* Mock */,
 				99FB53FD264C118100264C84 /* FeedAPI.swift */,
 				9963FBA8265148E900F20C52 /* APIHandler.swift */,
 				9963FBAA26514B2F00F20C52 /* APILoader.swift */,
 				9963FBAC26514D3600F20C52 /* APIHelper.swift */,
-				9963FBAE26516DC200F20C52 /* MockUrlProtocol.swift */,
-				9963FBB026516E2600F20C52 /* MockAPI.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";

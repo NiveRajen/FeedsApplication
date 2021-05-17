@@ -24,7 +24,7 @@ final class ApplicationAPI {
     }
   }
   
-  ///Getting feeds
+  ///Getting Comments
   ///
   /// - Parameter completionHandler: returns Return type and request error
   func getComments(for id: String, completionHandler: @escaping(_ result: Result<[Comments], RequestError>) -> Void) {
